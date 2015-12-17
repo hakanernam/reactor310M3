@@ -20,14 +20,17 @@ class EventService{
     @PostConstruct
     def serviceMethod() {
         on("gorm:preInsert") { PreInsertEvent event ->
-            println "GORM CLOSURE GOT EVENT ${event.entityObject.class.name}"
+            print "GORM CLOSURE GOT EVENT ${event.entityObject.class.name}"
             def eobj = event.entityObject
             if(eobj.class.simpleName=="Car"){
-                print("\tCar: ")
-                println(eobj.properties)
+                println(" | " + eobj.properties)
             }else{
                 println("\tNot Car: "+ eobj)
             }
+        }
+
+        on("car:new") { Car car ->
+           println "CAR  CLOSURE GOT EVENT: $car | ${car.brand}"
         }
     }
 
