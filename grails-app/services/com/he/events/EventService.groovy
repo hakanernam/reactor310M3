@@ -47,6 +47,6 @@ class EventService{
 
     @Selector('bus:new')
     void newBusListener(Bus bus) {
-        println "BUS LISTENER: $bus"  //Should not come, not generated
+        println "BUS LISTENER: $bus"  
     }
 }
